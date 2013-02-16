@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Fuel Logger</string>
+    <string name="title_section3">Chart</string>
+    <string name="title_section2">Summary</string>
+    <string name="title_section1">New Entry</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="odometer_reading">Odometer Reading</string>
+    <string name="kms">Kms</string>
+    <string name="fuel_filled">Fuel Filled</string>
+    <string name="l">Lts</string>
+    <string name="fuel_price">Fuel Price</string>
+    <string name="cents">cents</string>
+    <string name="save">Save</string>
+    <string name="date_time_dialog_title">Set Date and Time</string>
+    <string name="reset">Reset</string>
+    <string name="edit_date_time">Edit Date Time</string>
+    <string name="you_do_not_have_any_fuel_logs_">You do not have any fuel logs!</string>
+    <string name="summary_error_text">You do not have any fuel logs!</string>
+    <string name="preference_first_launch">false</string>
+    <string name="initial_odo_instruction">Please enter your initial odomoeter reading. The default is 0kms.</string>
+    <string name="initial_odo_value">INITIAL_ODO_VALUE</string>
+    <string name="initial_odo_dialog_title">Initial Odometer Reading</string>
+    <string name="price_input_hint">Price per litre in cents</string>
+    <string name="fuel_amount_hint">Amount of fuel filled in litres</string>
+    <string name="odo_input_hint">Odometer reading in kms</string>
+    <string name="dashboard_text_label">"No of days since last fuel fill "</string>
+
+</resources>
