@@ -26,10 +26,12 @@ import com.parousia.fuellogger.R;
 import com.parousia.fuellogger.R.string;
 import com.parousia.fuellogger.db.FuelDataSource;
 import com.parousia.fuellogger.model.FuelEntry;
+import com.parousia.fuellogger.views.FuelLogActivity;
+import com.parousia.fuellogger.views.FuelSummaryUpdater;
 import com.parousia.fuellogger.views.dialogs.DateTimePickerDialog;
 import com.parousia.fuellogger.views.dialogs.DateTimePickerDialog.DateTimeDialogListener;
 
-public class FuelLogFragment extends Fragment implements DateTimeDialogListener {
+public class FuelLogFragment extends Fragment implements DateTimeDialogListener, FuelSummaryUpdater {
 
 	public static Fragment newInstance(Context context) {
 		FuelLogFragment fuelLogFragment = new FuelLogFragment();
@@ -177,13 +179,6 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener 
 						.toString()), Double.parseDouble(fuelAmountIput
 						.getText().toString()), Double
 						.parseDouble(fuelPriceInput.getText().toString()));
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
 				return "";
 			}
 
@@ -193,6 +188,7 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener 
 				if (progress.isShowing()) {
 					progress.dismiss();
 				}
+				((FuelLogActivity)getActivity()).updateSummaryTable();
 			}
 
 		}.execute("");
@@ -217,6 +213,11 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener 
 	private String getCurrentDateAndTime() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		return df.format(new Date());
+	}
+
+	@Override
+	public void updateSummaryTable() {
+		
 	}
 
 }

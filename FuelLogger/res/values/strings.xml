@@ -27,5 +27,6 @@
     <string name="fuel_amount_hint">Amount of fuel filled in litres</string>
     <string name="odo_input_hint">Odometer reading in kms</string>
     <string name="dashboard_text_label">"No of days since last fuel fill "</string>
+    <string name="dashboard_text_date">12-Feb-2012</string>
 
 </resources>

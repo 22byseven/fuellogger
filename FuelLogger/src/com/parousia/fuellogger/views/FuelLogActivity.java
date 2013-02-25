@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import com.parousia.fuellogger.R;
 import com.parousia.fuellogger.constants.AppConstants;
@@ -26,7 +27,7 @@ import com.parousia.fuellogger.views.fragments.FuelLogFragment;
 import com.parousia.fuellogger.views.fragments.FuelSummaryFragment;
 
 public class FuelLogActivity extends FragmentActivity implements
-		InitialOdoDialogListener {
+		InitialOdoDialogListener, FuelSummaryUpdater {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -197,6 +198,13 @@ public class FuelLogActivity extends FragmentActivity implements
 			return null;
 		}
 
+	}
+
+	@Override
+	public void updateSummaryTable() {
+		final InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(mViewPager.getWindowToken(), 0);
+		mViewPager.setCurrentItem(1);
 	}
 
 }

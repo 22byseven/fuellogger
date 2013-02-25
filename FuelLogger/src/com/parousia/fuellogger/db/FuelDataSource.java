@@ -97,7 +97,8 @@ public class FuelDataSource {
 		String buildSQL = "Select * from " + AppConstants.TABLE_FUELLOG;
 		if(database != null)
 		{
-			return database.rawQuery(buildSQL, null);
+			Cursor c = database.rawQuery(buildSQL, null); 
+			return c;
 		}
 		return null;
 	}

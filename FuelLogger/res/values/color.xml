@@ -2,10 +2,13 @@
 <resources>
 
     <color name="black">#000</color>
+    <color name="white">#fff</color>
     <color name="green_title_strip">#9BCD9B</color>
     <color name="red_log_entry_text">#EE4000</color>
     <color name="green_log_label">#698B69</color>
-    <color name="orange_dashboard_label">#FF8C00</color>
-    <color name="blue_dashboard_value">#00B2EE</color>
+    <color name="orange_dashboard_value">#FF6A00</color>
+    <color name="blue_dashboard_label">#1814FF</color>
+    <color name="blue_violet">#793DFA</color>
+    <color name="dark_blue">#0C1555</color>
 
 </resources>

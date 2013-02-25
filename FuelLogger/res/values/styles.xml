@@ -41,18 +41,25 @@
 
     <style name="style_dashboard_label" parent="android:Widget.Holo.Light.TextView">
         <item name="android:layout_margin">4dp</item>
-        <item name="android:textColor">@color/orange_dashboard_label</item>
+        <item name="android:textColor">@color/red_log_entry_text</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle"></item>
+        <item name="android:typeface">monospace</item>
+    </style>
+    <style name="style_dashboard_date" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:textColor">@color/blue_violet</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">italic</item>
         <item name="android:typeface">monospace</item>
     </style>
 
     <style name="style_dashboard_value" parent="android:Widget.Holo.Light.TextView">
         <item name="android:layout_margin">4dp</item>
-        <item name="android:textColor">@color/blue_dashboard_value</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/blue_violet</item>
+        <item name="android:textSize">38sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:typeface">sans</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

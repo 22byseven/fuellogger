@@ -48,7 +48,8 @@
             android:gravity="center"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            android:textStyle="bold" >
+            android:textStyle="bold" 
+            android:textIsSelectable="true">
         </TextView>
 
         <TextView
@@ -59,7 +60,8 @@
             android:textColor="@android:color/black"
             android:textSize="15sp"
             android:textStyle="italic"
-            android:typeface="serif" >
+            android:typeface="serif" 
+            android:textIsSelectable="true">
         </TextView>
     </LinearLayout>
 
@@ -70,6 +72,8 @@
         android:layout_weight="0.50"
         android:gravity="right"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/red_log_entry_text" 
+        android:textIsSelectable="true"/>
 
 </LinearLayout>
