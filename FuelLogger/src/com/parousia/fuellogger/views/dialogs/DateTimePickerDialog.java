@@ -3,6 +3,7 @@ package com.parousia.fuellogger.views.dialogs;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -31,7 +32,7 @@ public class DateTimePickerDialog extends DialogFragment implements
 	}
 
 	public interface DateTimeDialogListener {
-		public void onPositiveClick(String selectedDateTime);
+		public void onPositiveClick(Date selectedDateTime);
 		public void onNegativeClick();
 
 	}
@@ -72,23 +73,13 @@ public class DateTimePickerDialog extends DialogFragment implements
 		}
 	}
 	
-	public String retreiveAndFormatDate()
+	public Date retreiveAndFormatDate()
 	{
 		datePicker = (DatePicker) DateTimePickerDialog.this.getDialog().findViewById(R.id.datePicker);
-//		timePicker = (TimePicker) DateTimePickerDialog.this.getDialog().findViewById(R.id.timePicker);
-		
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		String selectedDate = df.format(datePicker.getCalendarView().getDate());
-//		String AM_PM = "AM";
-//		Integer hr = timePicker.getCurrentHour();
-//		
-//		DecimalFormat df = new DecimalFormat("#00");
-//		Integer minute = timePicker.getCurrentMinute();
-//		
-//		String selectedTime = (String) (hr  + " : " +df.format(minute));
-		
-//		return (selectedDate + " " +selectedTime);
-		return selectedDate;
+//		DateFormat df = new SimpleDateFormat("yyyy-MMM-dd");
+//		String selectedDate = df.format(datePicker.getCalendarView().getDate());
+		Date d = new Date(datePicker.getCalendarView().getDate());
+		return d;
 	}
 
 }

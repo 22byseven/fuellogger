@@ -10,70 +10,109 @@
         android:id="@+id/calendarlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/empty_calendar"
+        android:background="@color/yellow_date_bg"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/calendar_month"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom|center"
-            android:paddingTop="18dp"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:layout_weight="0.2"
+            android:gravity="top|center"
+            android:text="DEC"
+            android:textAllCaps="true"
+            android:textColor="@color/blue_month"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/calendar_day"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.56"
-            android:gravity="top|center"
+            android:layout_weight="0.5"
+            android:gravity="center"
             android:padding="1dp"
+            android:text="24"
+            android:textColor="@color/red_day"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/calendar_year"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="bottom|center"
+            android:padding="1dp"
+            android:text="2013"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/detailslayout"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.50"
-        android:orientation="vertical" >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.96"
+        android:orientation="vertical"
+        android:paddingLeft="12dp" >
+
+        <LinearLayout
+            android:id="@+id/detaillayouttop"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.5" 
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/fuel_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:drawableLeft="@drawable/gas_tank_icon"
+                android:drawablePadding="5dp"
+                android:paddingRight="2dp"
+                android:text="50 litres"
+                android:textColor="@android:color/black"
+                android:textIsSelectable="true"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/fuel_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/gas_tank_icon"
+                android:drawablePadding="5dp"
+                android:text="123 cents"
+                android:textColor="@android:color/black"
+                android:textIsSelectable="true"
+                android:textSize="14sp"
+                android:textStyle="italic"
+                android:typeface="serif" >
+            </TextView>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/fuel_amount"
+            android:id="@+id/fuel_spent"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" 
-            android:textIsSelectable="true">
-        </TextView>
-
-        <TextView
-            android:id="@+id/fuel_price"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
-            android:textStyle="italic"
-            android:typeface="serif" 
-            android:textIsSelectable="true">
+            android:gravity="bottom"
+            android:drawableLeft="@drawable/gas_tank_icon"
+            android:paddingLeft="10dp"
+            android:text="$123.23"
+            android:textColor="@color/red_log_entry_text"
+            android:textIsSelectable="true"
+            android:textSize="28sp"
+            android:textStyle="bold" >
         </TextView>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/fuel_spent"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.50"
-        android:gravity="right"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/red_log_entry_text" 
-        android:textIsSelectable="true"/>
-
+    
+    <ImageView
+        android:id="@+id/not_available_image"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/not_available" />
+    
 </LinearLayout>

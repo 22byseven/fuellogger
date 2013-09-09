@@ -1,5 +1,6 @@
 package com.parousia.fuellogger.views.fragments;
 
+import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,6 +27,7 @@ import android.widget.TextView;
 import com.parousia.fuellogger.R;
 import com.parousia.fuellogger.constants.AppConstants;
 import com.parousia.fuellogger.db.FuelDataSource;
+import com.parousia.fuellogger.utils.DateTimeUtil;
 
 public class FuelSummaryFragment extends Fragment {
 
@@ -41,6 +43,8 @@ public class FuelSummaryFragment extends Fragment {
 	private CustomListAdapter adapter;
 	private ProgressDialog progress;
 	private TextView dashboardValue;
+	private Typeface robotoMediumTf;
+	private Typeface robotoThinTf;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,8 +58,12 @@ public class FuelSummaryFragment extends Fragment {
 
 		dashboardValue = (TextView) root
 				.findViewById(R.id.dashboard_days_value);
-		Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/roboto-medium.ttf");
-		dashboardValue.setTypeface(tf);
+		
+		robotoMediumTf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/roboto-medium.ttf");
+		robotoThinTf = Typeface.createFromAsset(getActivity().getAssets(), "fonts/roboto-thin.ttf");
+		
+		
+		dashboardValue.setTypeface(robotoMediumTf);
 		
 
 		dataSource = new FuelDataSource(getActivity());
@@ -175,6 +183,8 @@ public class FuelSummaryFragment extends Fragment {
 			TextView monthText = (TextView) view
 					.findViewById(R.id.calendar_month);
 			TextView dayText = (TextView) view.findViewById(R.id.calendar_day);
+			TextView yearText = (TextView) view
+					.findViewById(R.id.calendar_year);
 			TextView fuelAmountText = (TextView) view
 					.findViewById(R.id.fuel_amount);
 			TextView fuelPriceText = (TextView) view
@@ -182,23 +192,27 @@ public class FuelSummaryFragment extends Fragment {
 			TextView fuelSpentText = (TextView) view
 					.findViewById(R.id.fuel_spent);
 
-			String dateTime = cursor.getString(cursor
+			long dateTime = cursor.getLong(cursor
 					.getColumnIndex(AppConstants.COLUMN_DATE));
 			String amount = cursor.getString(cursor
 					.getColumnIndex(AppConstants.COLUMN_FUELAMOUNT));
 			String price = cursor.getString(cursor
 					.getColumnIndex(AppConstants.COLUMN_FUELPRICE));
 
-			StringTokenizer st = new StringTokenizer(dateTime, "-");
+			StringTokenizer st = new StringTokenizer(DateTimeUtil.convertDateToString(new Date(dateTime)), "-");
 			String day = "", month = "", year = "";
 			while (st.hasMoreTokens()) {
-				day = st.nextToken();
-				month = st.nextToken();
 				year = st.nextToken();
+				month = st.nextToken();
+				day = st.nextToken();
 			}
 
 			monthText.setText(month);
+			monthText.setTypeface(robotoThinTf);
 			dayText.setText(day);
+			dayText.setTypeface(robotoMediumTf);
+			yearText.setText(year);
+			yearText.setTypeface(robotoThinTf);
 			fuelAmountText.setText(amount + " Litres");
 			fuelPriceText.setText(price + " cents");
 			Double spent = (Double.parseDouble(amount) * Double

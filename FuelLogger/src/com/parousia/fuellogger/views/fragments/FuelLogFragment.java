@@ -1,7 +1,9 @@
 package com.parousia.fuellogger.views.fragments;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -26,12 +28,14 @@ import com.parousia.fuellogger.R;
 import com.parousia.fuellogger.R.string;
 import com.parousia.fuellogger.db.FuelDataSource;
 import com.parousia.fuellogger.model.FuelEntry;
+import com.parousia.fuellogger.utils.DateTimeUtil;
 import com.parousia.fuellogger.views.FuelLogActivity;
 import com.parousia.fuellogger.views.FuelSummaryUpdater;
 import com.parousia.fuellogger.views.dialogs.DateTimePickerDialog;
 import com.parousia.fuellogger.views.dialogs.DateTimePickerDialog.DateTimeDialogListener;
 
-public class FuelLogFragment extends Fragment implements DateTimeDialogListener, FuelSummaryUpdater {
+public class FuelLogFragment extends Fragment implements
+		DateTimeDialogListener, FuelSummaryUpdater {
 
 	public static Fragment newInstance(Context context) {
 		FuelLogFragment fuelLogFragment = new FuelLogFragment();
@@ -105,7 +109,7 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener,
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 
-		currentDateTimeString = getCurrentDateAndTime();
+		currentDateTimeString = DateTimeUtil.TODAY;
 
 		dateTimeLabel.setClickable(false);
 		dateTimeLabel.setText(currentDateTimeString);
@@ -174,11 +178,20 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener,
 
 			@Override
 			protected String doInBackground(String... params) {
-				entry = datasource.createEntry(dateTimeLabel.getText()
-						.toString(), Long.parseLong(odometerInput.getText()
-						.toString()), Double.parseDouble(fuelAmountIput
-						.getText().toString()), Double
-						.parseDouble(fuelPriceInput.getText().toString()));
+				Date date = null;
+				try {
+					date = new SimpleDateFormat("yyyy-MMM-dd", Locale.ENGLISH)
+							.parse(dateTimeLabel.getText().toString());
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				entry = datasource
+						.createEntry(date, Long.parseLong(odometerInput
+								.getText().toString()), Double
+								.parseDouble(fuelAmountIput.getText()
+										.toString()), Double
+								.parseDouble(fuelPriceInput.getText()
+										.toString()));
 				return "";
 			}
 
@@ -188,7 +201,7 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener,
 				if (progress.isShowing()) {
 					progress.dismiss();
 				}
-				((FuelLogActivity)getActivity()).updateSummaryTable();
+				((FuelLogActivity) getActivity()).updateSummaryTable();
 			}
 
 		}.execute("");
@@ -196,28 +209,24 @@ public class FuelLogFragment extends Fragment implements DateTimeDialogListener,
 	}
 
 	@Override
-	public void onPositiveClick(String selectedDateTime) {
+	public void onPositiveClick(Date selectedDateTime) {
 
-		dateTimeLabel.setText(selectedDateTime);
+		dateTimeLabel.setText(DateTimeUtil
+				.convertDateToString(selectedDateTime));
 		dateTimeDialog.dismiss();
 
 	}
 
 	@Override
 	public void onNegativeClick() {
-		dateTimeLabel.setText(getCurrentDateAndTime());
+		dateTimeLabel.setText(DateTimeUtil.TODAY);
 		dateTimeDialog.dismiss();
 
 	}
 
-	private String getCurrentDateAndTime() {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		return df.format(new Date());
-	}
-
 	@Override
 	public void updateSummaryTable() {
-		
+
 	}
 
 }

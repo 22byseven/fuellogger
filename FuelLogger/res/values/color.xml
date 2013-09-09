@@ -10,5 +10,7 @@
     <color name="blue_dashboard_label">#1814FF</color>
     <color name="blue_violet">#793DFA</color>
     <color name="dark_blue">#0C1555</color>
-
+    <color name="yellow_date_bg">#FFFF99</color>
+    <color name="blue_month">#0000FF</color>
+    <color name="red_day">#FF0000</color>
 </resources>

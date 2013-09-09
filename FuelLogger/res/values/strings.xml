@@ -28,5 +28,8 @@
     <string name="odo_input_hint">Odometer reading in kms</string>
     <string name="dashboard_text_label">"No of days since last fuel fill "</string>
     <string name="dashboard_text_date">12-Feb-2012</string>
+    <string name="fuel_tank_icon">Fuel tank icon</string>
+    <string name="coins_icon">Coins icon</string>
+    <string name="wallet_icon">Wallet icon</string>
 
 </resources>
