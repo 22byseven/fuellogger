@@ -51,7 +51,7 @@
 
     <LinearLayout
         android:id="@+id/detailslayout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.96"
         android:orientation="vertical"
@@ -60,19 +60,17 @@
         <LinearLayout
             android:id="@+id/detaillayouttop"
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:orientation="horizontal"
-            android:layout_weight="0.5" 
-            android:padding="10dp">
+            android:padding="8dp" >
 
             <TextView
                 android:id="@+id/fuel_amount"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:drawableLeft="@drawable/gas_tank_icon"
                 android:drawablePadding="5dp"
-                android:paddingRight="2dp"
                 android:text="50 litres"
                 android:textColor="@android:color/black"
                 android:textIsSelectable="true"
@@ -81,11 +79,10 @@
 
             <TextView
                 android:id="@+id/fuel_price"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/gas_tank_icon"
-                android:drawablePadding="5dp"
                 android:text="123 cents"
+                android:paddingLeft="20dp"
                 android:textColor="@android:color/black"
                 android:textIsSelectable="true"
                 android:textSize="14sp"
@@ -98,21 +95,19 @@
             android:id="@+id/fuel_spent"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:drawableLeft="@drawable/gas_tank_icon"
-            android:paddingLeft="10dp"
             android:text="$123.23"
+            android:paddingLeft="15dp"
             android:textColor="@color/red_log_entry_text"
             android:textIsSelectable="true"
             android:textSize="28sp"
             android:textStyle="bold" >
         </TextView>
     </LinearLayout>
-    
+
     <ImageView
         android:id="@+id/not_available_image"
         android:layout_width="70dp"
         android:layout_height="match_parent"
         android:src="@drawable/not_available" />
-    
+
 </LinearLayout>

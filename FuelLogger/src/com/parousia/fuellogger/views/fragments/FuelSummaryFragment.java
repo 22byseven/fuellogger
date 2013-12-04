@@ -65,6 +65,7 @@ public class FuelSummaryFragment extends Fragment {
 		
 		dashboardValue.setTypeface(robotoMediumTf);
 		
+		
 
 		dataSource = new FuelDataSource(getActivity());
 		dataSource.open();

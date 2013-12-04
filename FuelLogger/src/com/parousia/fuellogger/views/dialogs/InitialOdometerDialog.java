@@ -31,7 +31,7 @@ public class InitialOdometerDialog extends DialogFragment implements
 	public void setInitialOdoDialogListener(InitialOdoDialogListener listener) {
 		this.listener = listener;
 	}
-
+	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -70,5 +70,5 @@ public class InitialOdometerDialog extends DialogFragment implements
 
 		return initialOdoValue;
 	}
-
+	
 }
